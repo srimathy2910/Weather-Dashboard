@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Character Encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO: Page Title -->
+    <title>SkyCast | Live Weather Dashboard</title>
+
+    <!-- SEO: Meta Description -->
+    <meta
+        name="description"
+        content="Check live weather conditions, temperature, humidity, feels-like temperature, and wind speed for cities worldwide with SkyCast."
+    >
+
+    <!-- SEO: Search Engine Instructions -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Website Theme -->
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Author -->
+    <meta name="author" content="Srimathy R">
+
+    <!-- Social Media Preview -->
+    <meta property="og:title" content="SkyCast | Live Weather Dashboard">
+
+    <meta
+        property="og:description"
+        content="Explore current weather conditions, temperature, humidity, and wind speed for cities around the world."
+    >
+
+    <meta property="og:type" content="website">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <main class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+
+            <div class="logo">
+                <span class="logo-icon" aria-hidden="true">☀</span>
+                <h1>SkyCast</h1>
+            </div>
+
+            <p class="header-subtitle">
+                Your weather, at a glance.
+            </p>
+
+        </header>
+
+
+        <!-- City Search -->
+        <section
+            class="search-section"
+            aria-label="Search weather by city"
+        >
+
+            <form id="search-form" class="search-form">
+
+                <label
+                    for="city-input"
+                    class="visually-hidden"
+                >
+                    Enter city name
+                </label>
+
+                <span class="search-icon" aria-hidden="true">
+                    ⌕
+                </span>
+
+                <input
+                    type="text"
+                    id="city-input"
+                    name="city"
+                    placeholder="Search for a city..."
+                    autocomplete="off"
+                    maxlength="100"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    id="search-button"
+                >
+                    Search
+                </button>
+
+            </form>
+
+            <p
+                id="status-message"
+                class="status-message"
+                role="status"
+                aria-live="polite"
+            >
+                Search for a city to see its current weather.
+            </p>
+
+        </section>
+
+
+        <!-- Current Weather Dashboard -->
+        <section
+            class="weather-card"
+            aria-labelledby="city-name"
+        >
+
+            <!-- City Information -->
+            <div class="weather-top">
+
+                <div>
+
+                    <p class="section-label">
+                        CURRENT WEATHER
+                    </p>
+
+                    <h2 id="city-name">
+                        Chennai
+                    </h2>
+
+                    <p
+                        id="country-name"
+                        class="country-name"
+                    >
+                        Tamil Nadu, India
+                    </p>
+
+                </div>
+
+                <div
+                    class="weather-icon"
+                    id="weather-icon"
+                    role="img"
+                    aria-label="Current weather condition"
+                >
+                    🌤️
+                </div>
+
+            </div>
+
+
+            <!-- Temperature -->
+            <div class="temperature-section">
+
+                <div
+                    class="temperature"
+                    aria-label="Current temperature in degrees Celsius"
+                >
+
+                    <span id="temperature">--</span>
+
+                    <span class="degree-symbol">
+                        °C
+                    </span>
+
+                </div>
+
+                <p
+                    id="weather-description"
+                    class="weather-description"
+                >
+                    Waiting for weather data...
+                </p>
+
+                <p
+                    id="feels-like"
+                    class="feels-like"
+                >
+                    Live weather information
+                </p>
+
+            </div>
+
+
+            <div
+                class="weather-divider"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- Weather Metrics -->
+            <div class="weather-metrics">
+
+                <!-- Humidity -->
+                <article class="metric-card">
+
+                    <div
+                        class="metric-icon humidity-icon"
+                        aria-hidden="true"
+                    >
+                        💧
+                    </div>
+
+                    <div>
+
+                        <p class="metric-label">
+                            Humidity
+                        </p>
+
+                        <p class="metric-value">
+
+                            <span id="humidity">--</span>
+
+                            <span class="metric-unit">
+                                %
+                            </span>
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Wind Speed -->
+                <article class="metric-card">
+
+                    <div
+                        class="metric-icon wind-icon"
+                        aria-hidden="true"
+                    >
+                        💨
+                    </div>
+
+                    <div>
+
+                        <p class="metric-label">
+                            Wind Speed
+                        </p>
+
+                        <p class="metric-value">
+
+                            <span id="wind-speed">--</span>
+
+                            <span class="metric-unit">
+                                km/h
+                            </span>
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Wind Direction -->
+                <article class="metric-card">
+
+                    <div
+                        class="metric-icon weather-code-icon"
+                        aria-hidden="true"
+                    >
+                        🌡️
+                    </div>
+
+                    <div>
+
+                        <p class="metric-label">
+                            Wind Direction
+                        </p>
+
+                        <p class="metric-value">
+
+                            <span id="wind-direction">--</span>
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Observation Time -->
+            <p
+                class="last-updated"
+                id="last-updated"
+            >
+                Weather data will appear here.
+            </p>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+
+            <p>
+                Weather data powered by
+                <a
+                    href="https://open-meteo.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Open-Meteo
+                </a>
+            </p>
+
+            <p>
+                Built with HTML, CSS and JavaScript.
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
